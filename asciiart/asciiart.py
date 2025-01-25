@@ -1,9 +1,13 @@
 
 
 def load_file_data():
-    with open("asciiart\landscape.txt", "r") as file:
-        data = file.readlines()
-    return data
+
+    try:
+        with open("asciiart\landscape.txt", "r") as file:
+            data = file.readlines()
+        return data
+    except OSError as error:
+        exit(f"ERROR: {error}")
 
 def check_if_coordinate_is_valid(data, x, y):
 

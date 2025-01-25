@@ -2,10 +2,12 @@ import csv
 from datetime import datetime
 
 def load_csv_file():
-    with open("soccer\player_stats.csv", "r", encoding="utf-8") as file:
-        data = csv.reader(file)
-        next(data)
-        return list(data)
+    try:
+        with open("soccer\player_stats.csv", "r", encoding="utf-8") as file:
+            data = csv.reader(file)
+            next(data)
+    except OSError as error:
+        exit(f"ERROR: {error}")
     
 def calculate_age(birth_year):
     age = 2022 - birth_year
