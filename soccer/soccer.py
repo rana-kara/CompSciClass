@@ -4,8 +4,9 @@ from datetime import datetime
 def load_csv_file():
     try:
         with open("soccer\player_stats.csv", "r", encoding="utf-8") as file:
-            data = csv.reader(file)
-            next(data)
+            data = list(csv.reader(file))
+            data = data[1:]
+            return data
     except OSError as error:
         exit(f"ERROR: {error}")
     
